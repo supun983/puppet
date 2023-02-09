@@ -3,11 +3,10 @@ $iface = [
 ]
 
 # List of emaisl
-$email_addresses = [
+$email_addresses = 
   'supun983@gmail.com',
   'supun.wickramatilake@exactprosystems.com',
   'supunw@gmail.com',
-]
 
 #Arpwatch installation
 package { 'arpwatch':
