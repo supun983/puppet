@@ -30,6 +30,6 @@ $ifaces.each |String $iface| {
 service { 'arpwatch':
   ensure   => 'running',
   enable   => 'true',
-  provider => 'debian',
+  provider => 'apt',
   subscribe  => Package['arpwatch'],
 }
