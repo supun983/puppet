@@ -18,7 +18,7 @@ package { 'arpwatch':
 # Create a separate configuration file for each interface
 $iface.each |String $iface| {
   file { "/etc/arpwatch/$iface.iface":
-    content => "IFACE_ARGS='-m $email_addresses\n",
+    content => 'IFACE_ARGS="-m $email_addresses"\n',
     ensure => present,
     owner => 'root',
     mode => '0644',
