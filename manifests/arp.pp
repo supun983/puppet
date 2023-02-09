@@ -18,7 +18,7 @@ package { 'arpwatch':
 # Create a separate configuration file for each interface
 $iface.each |String $iface| {
   file { "/etc/arpwatch/$iface.iface":
-    content => "interface: {$iface}\nmail-to: {$email_addresses.join(', ')}\n",
+    content => "interface: {$iface}\nmail-to: {$emails_addresses.join(', ')}\n",
     ensure => present,
     owner => 'root',
     mode => '0644',
