@@ -1,0 +1,11 @@
+# Template for arpwatch configuration file
+
+# Monitor the specified interfaces
+<% interfaces.each do |iface| -%>
+interface <%= iface %>
+<% end -%>
+
+# Send notifications to the specified email addresses
+<% emails.each do |email| -%>
+email <%= email %>
+<% end -%>
