@@ -7,9 +7,9 @@ $interfaces = [
 
 # List of emaisl
 $emails = [
-  'user1@example.com',
-  'user2@example.com',
-  'user3@example.com',
+  'supun983@gmail.com',
+  'supun.wickramatilake@exactprosystems.com',
+  'supunw@gmail.com',
 ]
 
 #Arpwatch installation
