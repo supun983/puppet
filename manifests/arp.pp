@@ -1,10 +1,3 @@
-# Define interfaces list
-$original_interfaces = [
-  'eth0',
-  'eth1',
-  'eth2',
-]
-
 # List of emaisl
 $emails = [
   'supun983@gmail.com',
@@ -19,11 +12,9 @@ package { 'arpwatch':
 }
 
 # Create a separate configuration file for each interface
-$interfaces.each |String $iface| {
-  file { "/etc/arpwatch/#{$iface}.iface":
-    content => template("module/arpwatch.#{$iface}.iface.erb"),
-    notify  => Service['arpwatch'],
-  }
+file { "/etc/arpwatch/#{$iface}.iface":
+  content => "interface: #{$iface}\nmail-to: #{$email_addresses.join(', ')}\n",
+  notify  => Service['arpwatch'],
 }
 
 #arpwatch service
