@@ -5,9 +5,6 @@ $original_interfaces = [
   'eth2',
 ]
 
-# Update the list of interfaces
-$interfaces = $original_interfaces + ['eth3', 'eth4']
-
 # List of emaisl
 $emails = [
   'supun983@gmail.com',
