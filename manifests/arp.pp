@@ -1,6 +1,6 @@
-$iface = {
+$iface = [
   'eth0',
-}
+]
 
 # List of emaisl
 $email_addresses = { 
