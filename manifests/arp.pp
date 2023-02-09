@@ -18,7 +18,7 @@ package { 'arpwatch':
 # Create a separate configuration file for each interface
 $ifaces.each |String $iface| {
   file { "/etc/arpwatch/#{$iface}.iface":
-    content => "interface: #{$iface}\nmail-to: #{$emails(', ')}\n",
+    content => "interface: #{$iface}\nmail-to: #{$email_addresses.join(', ')}\n",
     ensure => present,
     owner => 'root',
     mode => '0644',
@@ -31,4 +31,5 @@ service { 'arpwatch':
   ensure   => 'running',
   enable   => 'true',
   provider => 'debian',
+  subscribe  => Package['arpwatch'],
 }
