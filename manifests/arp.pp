@@ -4,9 +4,9 @@ $iface = [
 
 # List of emails
 $email_addresses = [ 
-  supun983@gmail.com,
-  supun.wickramatilake@exactprosystems.com,
-  supunw@gmail.com,
+  'supun983@gmail.com',
+  'supun.wickramatilake@exactprosystems.com',
+  'supunw@gmail.com',
 ]
 
 #Arpwatch installation
