@@ -13,13 +13,12 @@ $emails = [
 package { 'arpwatch':
   ensure   => '2.1a15-7',
   provider => 'apt',
-  subscribe  => Package['arpwatch'],
 }
 
 # Create a separate configuration file for each interface
 $ifaces.each |String $iface| {
   file { "/etc/arpwatch/#{$iface}.iface":
-    content => "interface: #{$iface}\nmail-to: #{$email_addresses.join(', ')}\n",
+    content => "interface: #{$iface}\nmail-to: #{$emails(', ')}\n",
     ensure => present,
     owner => 'root',
     mode => '0644',
