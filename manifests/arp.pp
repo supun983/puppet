@@ -3,7 +3,7 @@ $iface = [
 ]
 
 # List of emaisl
-$emails = [
+$email_addresses = [
   'supun983@gmail.com',
   'supun.wickramatilake@exactprosystems.com',
   'supunw@gmail.com',
@@ -18,7 +18,7 @@ package { 'arpwatch':
 # Create a separate configuration file for each interface
 $iface.each |String $iface| {
   file { "/etc/arpwatch/$iface.iface":
-    content => "interface: {$iface}\nmail-to: {$emails_addresses.join(', ')}\n",
+    content => "interface: {$iface}\nmail-to: {$email_addresses.join(', ')}\n",
     ensure => present,
     owner => 'root',
     mode => '0644',
