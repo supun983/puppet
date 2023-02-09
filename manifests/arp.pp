@@ -1,4 +1,4 @@
-$ifaces = [
+$iface = [
   'eth0',
 ]
 
