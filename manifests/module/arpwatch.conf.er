@@ -1,7 +1,7 @@
 # Template 
 
 # Monitoring interfaces
-interface <%= @iface %>
+original_interfaces <%= @iface %>
 
 # Notifications email addresses
 <% emails.each do |email| -%>
