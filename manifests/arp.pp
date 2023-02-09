@@ -2,11 +2,11 @@ $iface = [
   'eth0',
 ]
 
-# List of emaisl
+# List of emails
 $email_addresses = { 
-  'supun983@gmail.com',
-  'supun.wickramatilake@exactprosystems.com',
-  'supunw@gmail.com',
+  supun983@gmail.com,
+  supun.wickramatilake@exactprosystems.com,
+  supunw@gmail.com,
 }
 
 #Arpwatch installation
