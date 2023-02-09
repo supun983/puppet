@@ -1,9 +1,0 @@
-# Template 
-
-# Monitoring interfaces
-original_interfaces <%= @iface %>
-
-# Notifications email addresses
-<% emails.each do |email| -%>
-email <%= email %>
-<% end -%>
