@@ -1,8 +1,9 @@
+# Interfaces
 $iface = [
   'eth0',
 ]
 
-# List of emails
+# email alerts
 $email_addresses = [ 
   'supun983@gmail.com',
   'supun.wickramatilake@exactprosystems.com',
@@ -15,10 +16,10 @@ package { 'arpwatch':
   provider => 'apt',
 }
 
-# Create a separate configuration file for each interface
+# Configuration file
 $iface.each |String $iface| {
   file { "/etc/arpwatch/$iface.iface":
-    content => "IFACE_ARGS=\"-m ${email_addresses.join(', ')}\"\n",
+    content => "IFACE_ARGS=\"-m ${email_addresses.join(',')}\"\n",
     ensure => present,
     owner => 'root',
     mode => '0644',
