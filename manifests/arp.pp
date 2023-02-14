@@ -1,8 +1,9 @@
 # Interfaces
 $iface = [
-  'eth0',
-  'eth1',
+'eth0',
+'eth1',
 ]
+
 
 # email alerts
 $email_addresses = [ 
@@ -18,21 +19,21 @@ package { 'arpwatch':
 }
 
 # Configuration file
-$interfaces.each |String $iface| {
-  file { "/etc/arpwatch/${iface}.iface":
-    content => "IFACE_ARGS=\"-m ${email_addresses.join(',')}\"\n",
-    ensure => present,
-    owner => 'root',
-    mode => '0644',
-    notify  => Service["arpwatch@${iface}.service"],
-  }
+$iface.each |String $iface| {
+file { "/etc/arpwatch/${iface}.iface":
+content => "IFACE_ARGS="-m ${email_addresses.join(',')}"\n",
+ensure => present,
+owner => 'root',
+mode => '0644',
+notify => Service["arpwatch@${iface}.service"],
+}
 }
 
 #arpwatch service
-$interfaces.each |String $iface| {
-  service { "arpwatch@${iface}.service":
-    ensure   => 'running',
-    enable   => 'true',
-    subscribe  => Package['arpwatch'],
-  }
+$iface.each |String $iface| {
+service { "arpwatch@${iface}.service":
+ensure => 'running',
+enable => 'true',
+subscribe => Package['arpwatch'],
+}
 }
