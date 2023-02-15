@@ -1,8 +1,5 @@
 # Interfaces
-$iface = [
-  'eth0',
-  'vlan100',
-]
+$iface = ['eth0', 'vlan100']
 
 # email alerts
 $email_addresses = [ 
@@ -18,32 +15,30 @@ package { 'arpwatch':
 }
 
 # Remove unmanaged files in /etc/arpwatch
-@service { $iface.map |$iface| { "arpwatch@${iface}.service" }: }
-
 file { '/etc/arpwatch':
   ensure => directory,
   purge  => true,
   recurse => true,
   force  => true,
-  notify => Service<| title == "arpwatch@*" |>['restart'],
+  notify => Service["arpwatch@${iface.join(',')}.service"],
 }
 
 # Configuration file
 $iface.each |String $iface| {
   file { "/etc/arpwatch/${iface}.iface":
     content => "IFACE_ARGS=\"-m ${email_addresses.join(',')}\"\n",
-    ensure => present,
-    owner => 'root',
-    mode => '0644',
-    notify => Service["arpwatch@${iface}.service"],
+    ensure  => present,
+    owner   => 'root',
+    mode    => '0644',
+    notify  => Service["arpwatch@${iface}.service"],
   }
 }
 
 #arpwatch service
 $iface.each |String $iface| {
   service { "arpwatch@${iface}.service":
-    ensure => 'running',
-    enable => 'true',
-    subscribe => Package['arpwatch'],
+    ensure     => 'running',
+    enable     => 'true',
+    subscribe  => Package['arpwatch'],
   }
 }
