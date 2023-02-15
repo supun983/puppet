@@ -37,3 +37,12 @@ enable => 'true',
 subscribe => Package['arpwatch'],
 }
 }
+
+# Remove unmanaged files in /etc/arpwatch
+file { '/etc/arpwatch':
+  ensure => directory,
+  purge  => true,
+  recurse => true,
+  force  => true,
+  notify => Service['arpwatch'],
+}
