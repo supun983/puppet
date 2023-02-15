@@ -20,11 +20,11 @@ package { 'arpwatch':
 
 # Remove unmanaged files in /etc/arpwatch
 file { '/etc/arpwatch':
-  ensure => directory,
-  purge  => true,
+  ensure  => directory,
+  purge   => true,
   recurse => true,
-  force  => true,
-  notify => Service["arpwatch@${iface}.service"],
+  force   => true,
+  notify  => Service<| title =~ /arpwatch@.+/ |>,
 }
 
 # Configuration file
