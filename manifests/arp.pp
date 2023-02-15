@@ -44,5 +44,5 @@ file { '/etc/arpwatch':
   purge  => true,
   recurse => true,
   force  => true,
-  notify => Service['arpwatch'],
+  notify => Service["arpwatch@${iface}.service"],
 }
