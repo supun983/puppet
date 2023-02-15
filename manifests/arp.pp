@@ -18,6 +18,15 @@ package { 'arpwatch':
   provider => 'apt',
 }
 
+# Remove unmanaged files in /etc/arpwatch
+file { '/etc/arpwatch':
+  ensure => directory,
+  purge  => true,
+  recurse => true,
+  force  => true,
+  notify => Service["arpwatch@${iface}.service"],
+}
+
 # Configuration file
 $iface.each |String $iface| {
 file { "/etc/arpwatch/${iface}.iface":
@@ -36,13 +45,4 @@ ensure => 'running',
 enable => 'true',
 subscribe => Package['arpwatch'],
 }
-}
-
-# Remove unmanaged files in /etc/arpwatch
-file { '/etc/arpwatch':
-  ensure => directory,
-  purge  => true,
-  recurse => true,
-  force  => true,
-  notify => Service['arpwatch'],
 }
