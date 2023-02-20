@@ -1,0 +1,63 @@
+---
+classes:
+  - netplan
+  - arpwatch_vlans
+
+netplan::netplan_apply: false
+netplan::purge_config: false
+netplan::exp_parent_device: ens3
+netplan::config_file: /etc/netplan/01-netcfg.yaml
+
+
+netplan::ethernets:
+  eth0:
+    mtu: 1500 # dummy setting to avoid "Error in network definition"
+netplan::vlans:
+  vlans:
+    vlan100:
+      id: 100
+      link: eth0
+      addresses: [192.168.11.100/24]
+      gateway4: 192.168.11.1
+      dhcp4: no
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+    vlan101:
+      id: 101
+      link: eth0
+      addresses: [192.168.12.100/24]
+      gateway4: 192.168.12.1
+      dhcp4: no
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+    vlan102:
+      id: 102
+      link: eth0
+      addresses: [192.168.13.100/24]
+      gateway4: 192.168.13.1
+      dhcp4: no
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+    vlan103:
+      id: 103
+      link: eth0
+      addresses: [192.168.14.100/24]
+      gateway4: 192.168.14.1
+      dhcp4: no
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+    vlan104:
+      id: 104
+      link: eth0
+      addresses: [192.168.15.100/24]
+      gateway4: 192.168.15.1
+      dhcp4: no
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+
+
+arpwatch_vlans:
+- 'vlan101'
+- 'vlan102'
+- 'vlan103'
+- 'vlan104'
