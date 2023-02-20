@@ -12,3 +12,7 @@ hierarchy:
     path: "nodes/%{::trusted.certname}.yaml"
   - name: "Emails"
     path: "list/emails.yaml"
+  - name: "Client-Configs"
+    paths:
+      - "puppet/hieradata/nodes/puppetclient1.yaml"
+      - "puppet/hieradata/nodes/puppetclient2.yaml"
