@@ -1,7 +1,7 @@
 # Interfaces
 $iface = [
 'eth0',
-'vlan100',
+'vlan101',
 ]
 
 
